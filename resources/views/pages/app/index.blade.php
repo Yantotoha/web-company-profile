@@ -54,6 +54,7 @@
                  <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
              </div>
              <div class="row">
+
                  <div class="col-lg-4 col-sm-6 mb-4">
                      <!-- Portfolio item 1-->
                      <div class="portfolio-item">
@@ -109,8 +110,10 @@
                              <div class="portfolio-hover">
                                  <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                              </div>
-                             <img class="img-fluid" src="{{ asset('company_profile/assets/img/portfolio/4.jpg') }}"
-                                 alt="..." />
+                             <img class="img-fluid portfolio-image"
+                                 src="{{ asset('company_profile/assets/img/portfolio/4.jpg') }}" data-bs-toggle="modal"
+                                 data-img="{{ asset('company_profile/assets/img/portfolio/4.jpg') }}" alt="Gambar">
+
                          </a>
                          <div class="portfolio-caption">
                              <div class="portfolio-caption-heading">Lines</div>

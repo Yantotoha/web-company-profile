@@ -19,6 +19,19 @@
     <!-- Footer-->
     @include('includes.app.footer')
     <!-- Portfolio Modals-->
+    <!-- Modal Preview Gambar -->
+    <div class="modal fade" id="imagePreviewModal" tabindex="-1" aria-labelledby="imagePreviewModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content bg-dark">
+                <div class="modal-body text-center p-0">
+                    <img id="modalImagePreview" src="" class="img-fluid" alt="Preview"
+                        style="max-height:90vh;">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Portfolio item 1 modal popup-->
     <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
@@ -155,8 +168,11 @@
                                 <!-- Project details-->
                                 <h2 class="text-uppercase">Project Name</h2>
                                 <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/4.jpg"
-                                    alt="..." />
+                                <img class="img-fluid portfolio-image"
+                                    src="{{ asset('company_profile/assets/img/portfolio/4.jpg') }}"
+                                    data-bs-toggle="modal"
+                                    data-img="{{ asset('company_profile/assets/img/portfolio/4.jpg') }}"
+                                    alt="Gambar">
                                 <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
                                     adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt
                                     repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae,
@@ -267,6 +283,22 @@
     </div>
     <!-- Bootstrap core JS-->
     @yield('script')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.portfolio-image');
+            const modalImage = document.getElementById('modalImagePreview');
+
+            images.forEach(img => {
+                img.addEventListener('click', function() {
+                    const src = this.getAttribute('data-img');
+                    modalImage.src = src;
+                    const modal = new bootstrap.Modal(document.getElementById('imagePreviewModal'));
+                    modal.show();
+                });
+            });
+        });
+    </script>
+
 </body>
 
 </html>
