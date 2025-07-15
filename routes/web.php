@@ -3,11 +3,14 @@
 use App\Http\Controllers\admin\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\HomeController;
+use App\Http\Controllers\admin\MasterHeadController;
 use App\Http\Controllers\admin\UserController;
+use App\Http\Controllers\PublicController;
+use App\Models\MasterHead;
 use Illuminate\Routing\RouteGroup;
 
-Route::get('/', function () {
-    return view('welcome');
+Route::controller(PublicController::class)->group(function(){
+   Route::get('/','index');
 });
 
 Route::controller(AuthController::class)->middleware('guest')->group(function(){
@@ -29,5 +32,13 @@ Route::prefix('admin')->middleware('auth')->group(function(){
         Route::get('/users/detail', 'detail')->name('admin.users.detail');
         Route::post('/users/update', 'updateData')->name('admin.users.update'); 
         Route::delete('/users/delete', 'deleteData')->name('admin.users.delete');
+    });
+    Route::controller (MasterHeadController::class)->group (function(){
+        Route::get('/master-head', 'index')->name('admin.master-head');
+        Route::get('/master-head/data', 'getData')->name('admin.master-head.data');
+        Route::post('/master-head/store', 'storeData')->name('admin.master-head.store'); 
+        Route::get('/master-head/detail', 'detail')->name('admin.master-head.detail');
+        Route::post('/master-head/update', 'updateData')->name('admin.master-head.update'); 
+        Route::delete('/master-head/delete', 'deleteData')->name('admin.master-head.delete');
     });
 });
