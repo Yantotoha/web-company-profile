@@ -13,6 +13,9 @@
 </head>
 
 <body id="page-top">
+    <div class="loader-overlay">
+        <div class="loader"></div>
+    </div>
     <!-- Navigation-->
     @include('includes.app.navbar')
     <!-- Masthead-->

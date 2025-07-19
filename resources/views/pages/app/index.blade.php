@@ -400,11 +400,15 @@
      </section>
  @endsection
  @section('script')
+     <script src="{{ asset('template_admin/vendor/jquery/jquery.min.js') }}"></script>
      <script>
          $('document').ready(function(e) {
              $.ajax({
                  url: "{{ route('public.data') }}", // URL endpoint untuk controller 
                  method: 'GET',
+                 beforeSend: function() {
+                     $('.loader-overlay').css('display', 'flex');
+                 },
                  success: function(response) {
                      console.log(response); // Tambahan: cek di browser console
 
@@ -416,7 +420,10 @@
                              'background-image': `url("/storage/${masterhead.image}")`
                          });
                      }
-                 }
+                 },
+                 complete: function() {
+                     $('.loader-overlay').css('display', 'none');
+                 },
              });
          });
      </script>

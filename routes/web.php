@@ -12,7 +12,7 @@ use Illuminate\Routing\RouteGroup;
 
 Route::controller(PublicController::class)->group(function(){
    Route::get('/','index')->name('public');
-   Route::get('get','getData')->name('public.data');
+   Route::get('data','getData')->name('public.data');
 });
 
 Route::controller(AuthController::class)->middleware('guest')->group(function(){
