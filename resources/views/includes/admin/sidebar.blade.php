@@ -27,10 +27,22 @@
             <span>User</span>
         </a>
     </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider" />
     <li class="nav-item {{ Request::is('admin/master-head*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('admin.master-head') }}">
             <i class="fas fa-fw fa-users"></i>
             <span>Master Head</span>
+        </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider" />
+    <li class="nav-item {{ Request::is('admin/contact*') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.contact') }}">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Contact</span>
         </a>
     </li>
     <!-- Divider -->

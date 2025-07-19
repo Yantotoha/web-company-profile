@@ -3,8 +3,8 @@
  @section('content')
      <header class="masthead">
          <div class="container">
-             <div class="masthead-subheading">Welcome To Our Studio!</div>
-             <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
+             <div class="masthead-subheading" id="masthead-title">Welcome To Our Studio!</div>
+             <div class="masthead-heading text-uppercase" id="masthead-subtitle">It's Nice To Meet You</div>
              <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
          </div>
      </header>
@@ -62,7 +62,7 @@
                              <div class="portfolio-hover">
                                  <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                              </div>
-                             <img class="img-fluid" src="{{ asset('company_profile/assets/img/portfolio/1.jpg') }}"
+                             <img class="img-fluid" src="{{ asset('template_fe/assets/img/portfolio/1.jpg') }}"
                                  alt="..." />
                          </a>
                          <div class="portfolio-caption">
@@ -78,7 +78,7 @@
                              <div class="portfolio-hover">
                                  <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                              </div>
-                             <img class="img-fluid" src="{{ asset('company_profile/assets/img/portfolio/2.jpg') }}"
+                             <img class="img-fluid" src="{{ asset('template_fe/assets/img/portfolio/2.jpg') }}"
                                  alt="..." />
                          </a>
                          <div class="portfolio-caption">
@@ -94,7 +94,7 @@
                              <div class="portfolio-hover">
                                  <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                              </div>
-                             <img class="img-fluid" src="{{ asset('company_profile/assets/img/portfolio/3.jpg') }}"
+                             <img class="img-fluid" src="{{ asset('template_fe/assets/img/portfolio/3.jpg') }}"
                                  alt="..." />
                          </a>
                          <div class="portfolio-caption">
@@ -111,8 +111,8 @@
                                  <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                              </div>
                              <img class="img-fluid portfolio-image"
-                                 src="{{ asset('company_profile/assets/img/portfolio/4.jpg') }}" data-bs-toggle="modal"
-                                 data-img="{{ asset('company_profile/assets/img/portfolio/4.jpg') }}" alt="Gambar">
+                                 src="{{ asset('template_fe/assets/img/portfolio/4.jpg') }}" data-bs-toggle="modal"
+                                 data-img="{{ asset('template_fe/assets/img/portfolio/4.jpg') }}" alt="Gambar">
 
                          </a>
                          <div class="portfolio-caption">
@@ -128,7 +128,7 @@
                              <div class="portfolio-hover">
                                  <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                              </div>
-                             <img class="img-fluid" src="{{ asset('company_profile/assets/img/portfolio/5.jpg') }}"
+                             <img class="img-fluid" src="{{ asset('template_fe/assets/img/portfolio/5.jpg') }}"
                                  alt="..." />
                          </a>
                          <div class="portfolio-caption">
@@ -144,7 +144,7 @@
                              <div class="portfolio-hover">
                                  <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                              </div>
-                             <img class="img-fluid" src="{{ asset('company_profile/assets/img/portfolio/6.jpg') }}"
+                             <img class="img-fluid" src="{{ asset('template_fe/assets/img/portfolio/6.jpg') }}"
                                  alt="..." />
                          </a>
                          <div class="portfolio-caption">
@@ -166,7 +166,7 @@
              <ul class="timeline">
                  <li>
                      <div class="timeline-image"><img class="rounded-circle img-fluid"
-                             src="{{ asset('company_profile/assets/img/about/1.jpg') }}" alt="..." /></div>
+                             src="{{ asset('template_fe/assets/img/about/1.jpg') }}" alt="..." /></div>
                      <div class="timeline-panel">
                          <div class="timeline-heading">
                              <h4>2009-2011</h4>
@@ -181,7 +181,7 @@
                  </li>
                  <li class="timeline-inverted">
                      <div class="timeline-image"><img class="rounded-circle img-fluid"
-                             src="{{ asset('company_profile/assets/img/about/2.jpg') }}" alt="..." /></div>
+                             src="{{ asset('template_fe/assets/img/about/2.jpg') }}" alt="..." /></div>
                      <div class="timeline-panel">
                          <div class="timeline-heading">
                              <h4>March 2011</h4>
@@ -196,7 +196,7 @@
                  </li>
                  <li>
                      <div class="timeline-image"><img class="rounded-circle img-fluid"
-                             src="{{ asset('company_profile/assets/img/about/3.jpg') }}" alt="..." /></div>
+                             src="{{ asset('template_fe/assets/img/about/3.jpg') }}" alt="..." /></div>
                      <div class="timeline-panel">
                          <div class="timeline-heading">
                              <h4>December 2015</h4>
@@ -211,7 +211,7 @@
                  </li>
                  <li class="timeline-inverted">
                      <div class="timeline-image"><img class="rounded-circle img-fluid"
-                             src="{{ asset('company_profile/assets/img/about/4.jpg') }}" alt="..." /></div>
+                             src="{{ asset('template_fe/assets/img/about/4.jpg') }}" alt="..." /></div>
                      <div class="timeline-panel">
                          <div class="timeline-heading">
                              <h4>July 2020</h4>
@@ -248,7 +248,7 @@
              <div class="row">
                  <div class="col-lg-4">
                      <div class="team-member">
-                         <img class="mx-auto rounded-circle" src="{{ asset('company_profile/assets/img/team/1.jpg') }}"
+                         <img class="mx-auto rounded-circle" src="{{ asset('template_fe/assets/img/team/1.jpg') }}"
                              alt="..." />
                          <h4>Parveen Anand</h4>
                          <p class="text-muted">Lead Designer</p>
@@ -262,7 +262,7 @@
                  </div>
                  <div class="col-lg-4">
                      <div class="team-member">
-                         <img class="mx-auto rounded-circle" src="{{ asset('company_profile/assets/img/team/2.jpg') }}"
+                         <img class="mx-auto rounded-circle" src="{{ asset('template_fe/assets/img/team/2.jpg') }}"
                              alt="..." />
                          <h4>Diana Petersen</h4>
                          <p class="text-muted">Lead Marketer</p>
@@ -276,7 +276,7 @@
                  </div>
                  <div class="col-lg-4">
                      <div class="team-member">
-                         <img class="mx-auto rounded-circle" src="{{ asset('company_profile/assets/img/team/3.jpg') }}"
+                         <img class="mx-auto rounded-circle" src="{{ asset('template_fe/assets/img/team/3.jpg') }}"
                              alt="..." />
                          <h4>Larry Parker</h4>
                          <p class="text-muted">Lead Developer</p>
@@ -303,22 +303,22 @@
              <div class="row align-items-center">
                  <div class="col-md-3 col-sm-6 my-3">
                      <a href="#!"><img class="img-fluid img-brand d-block mx-auto"
-                             src="{{ asset('company_profile/assets/img/logos/microsoft.svg') }}" alt="..."
+                             src="{{ asset('template_fe/assets/img/logos/microsoft.svg') }}" alt="..."
                              aria-label="Microsoft Logo" /></a>
                  </div>
                  <div class="col-md-3 col-sm-6 my-3">
                      <a href="#!"><img class="img-fluid img-brand d-block mx-auto"
-                             src="{{ asset('company_profile/assets/img/logos/google.svg') }}" alt="..."
+                             src="{{ asset('template_fe/assets/img/logos/google.svg') }}" alt="..."
                              aria-label="Google Logo" /></a>
                  </div>
                  <div class="col-md-3 col-sm-6 my-3">
                      <a href="#!"><img class="img-fluid img-brand d-block mx-auto"
-                             src="{{ asset('company_profile/assets/img/logos/facebook.svg') }}" alt="..."
+                             src="{{ asset('template_fe/assets/img/logos/facebook.svg') }}" alt="..."
                              aria-label="Facebook Logo" /></a>
                  </div>
                  <div class="col-md-3 col-sm-6 my-3">
                      <a href="#!"><img class="img-fluid img-brand d-block mx-auto"
-                             src="{{ asset('company_profile/assets/img/logos/ibm.svg') }}" alt="..."
+                             src="{{ asset('template_fe/assets/img/logos/ibm.svg') }}" alt="..."
                              aria-label="IBM Logo" /></a>
                  </div>
              </div>
@@ -400,4 +400,24 @@
      </section>
  @endsection
  @section('script')
+     <script>
+         $('document').ready(function(e) {
+             $.ajax({
+                 url: "{{ route('public.data') }}", // URL endpoint untuk controller 
+                 method: 'GET',
+                 success: function(response) {
+                     console.log(response); // Tambahan: cek di browser console
+
+                     let masterhead = response.master_head;
+                     if (masterhead) {
+                         $('#masthead-title').text(masterhead.title);
+                         $('#masthead-subtitle').text(masterhead.subtitle);
+                         $('.masthead').css({
+                             'background-image': `url("/storage/${masterhead.image}")`
+                         });
+                     }
+                 }
+             });
+         });
+     </script>
  @endsection

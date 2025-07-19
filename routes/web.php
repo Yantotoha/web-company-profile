@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\admin\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\admin\AuthController;
+use App\Http\Controllers\admin\ContacController;
 use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\admin\MasterHeadController;
 use App\Http\Controllers\admin\UserController;
@@ -10,7 +11,8 @@ use App\Models\MasterHead;
 use Illuminate\Routing\RouteGroup;
 
 Route::controller(PublicController::class)->group(function(){
-   Route::get('/','index');
+   Route::get('/','index')->name('public');
+   Route::get('get','getData')->name('public.data');
 });
 
 Route::controller(AuthController::class)->middleware('guest')->group(function(){
@@ -40,5 +42,10 @@ Route::prefix('admin')->middleware('auth')->group(function(){
         Route::get('/master-head/detail', 'detail')->name('admin.master-head.detail');
         Route::post('/master-head/update', 'updateData')->name('admin.master-head.update'); 
         Route::delete('/master-head/delete', 'deleteData')->name('admin.master-head.delete');
+    });
+    Route::controller (ContacController::class)->group (function(){
+        Route::get('/contact', 'index')->name('admin.contact');
+        Route::get('/contact/data', 'getData')->name('admin.contact.data');
+        Route::delete('/contact/delete', 'deleteData')->name('admin.contact.delete');
     });
 });

@@ -155,6 +155,12 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
+
+
+
+
+
+
         $('document').ready(function(e) {
             var Tmh = $('#Tmh').DataTable({
                 "responsive": true,
@@ -216,9 +222,13 @@
             function redraw() {
                 Tmh.draw();
             }
+
+            // function tombol add new
             $("#add_new").click(function() {
                 $("#addModal").modal("show");
             });
+
+            // proses add
             $("#proses_add").click(function() {
                 var postData = new FormData($("#addForm")[0]);
                 $.ajax({
@@ -249,10 +259,14 @@
                     },
                 });
             });
+
+            // proses cari data
             $("#btn-cari").click(function() {
                 let search = $("#cari").val();
                 Tmh.draw();
             });
+
+            // tombol update data
             $("#Tmh tbody").on('click', '.btnUpdate', function() {
                 let data = Tmh.row($(this).parents('tr')).data();
                 let idData = data.id;
@@ -293,6 +307,8 @@
                 })
                 $("#updateModal").modal("show");
             });
+
+            // proses update data
             $("#proses_update").click(function() {
                 var postData = new FormData($("#updateForm")[0]);
                 $.ajax({
@@ -320,6 +336,7 @@
                     },
                 });
             });
+
             $("#Tmh tbody").on('click', '.btnDelete', function() {
                 let data = Tmh.row($(this).parents('tr')).data();
                 let idData = data.id;

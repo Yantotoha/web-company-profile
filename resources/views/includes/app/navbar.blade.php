@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand" href="#page-top"><img src="{{ asset('company_profile/assets/img/navbar-logo.svg') }}"
+        <a class="navbar-brand" href="#page-top"><img src="{{ asset('template_fe/assets/img/navbar-logo.svg') }}"
                 alt="..." /></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">

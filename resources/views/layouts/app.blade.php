@@ -9,6 +9,7 @@
     <title>Agency - Start Bootstrap Theme</title>
     <!-- Favicon-->
     @include('includes.app.style')
+
 </head>
 
 <body id="page-top">
@@ -37,7 +38,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="close-modal" data-bs-dismiss="modal"><img
-                        src="{{ asset('company_profile/assets/img/close-icon.svg') }}" alt="Close modal" /></div>
+                        src="{{ asset('template_fe/assets/img/close-icon.svg') }}" alt="Close modal" /></div>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
@@ -46,7 +47,7 @@
                                 <h2 class="text-uppercase">Project Name</h2>
                                 <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
                                 <img class="img-fluid d-block mx-auto"
-                                    src="{{ asset('company_profile/assets/img/portfolio/1.jpg') }}" alt="..." />
+                                    src="{{ asset('template_fe/assets/img/portfolio/1.jpg') }}" alt="..." />
                                 <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
                                     adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt
                                     repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae,
@@ -78,7 +79,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="close-modal" data-bs-dismiss="modal"><img
-                        src="{{ asset('company_profile/assets/img/close-icon.svg') }}" alt="Close modal" /></div>
+                        src="{{ asset('template_fe/assets/img/close-icon.svg') }}" alt="Close modal" /></div>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
@@ -87,7 +88,7 @@
                                 <h2 class="text-uppercase">Project Name</h2>
                                 <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
                                 <img class="img-fluid d-block mx-auto"
-                                    src="{{ asset('company_profile/assets/img/portfolio/2.jpg') }}" alt="..." />
+                                    src="{{ asset('template_fe/assets/img/portfolio/2.jpg') }}" alt="..." />
                                 <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
                                     adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt
                                     repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae,
@@ -119,7 +120,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="close-modal" data-bs-dismiss="modal"><img
-                        src="{{ asset('company_profile/assets/img/close-icon.svg') }}" alt="Close modal" /></div>
+                        src="{{ asset('template_fe/assets/img/close-icon.svg') }}" alt="Close modal" /></div>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
@@ -128,7 +129,7 @@
                                 <h2 class="text-uppercase">Project Name</h2>
                                 <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
                                 <img class="img-fluid d-block mx-auto"
-                                    src="{{ asset('company_profile/assets/img/portfolio/3.jpg') }}" alt="..." />
+                                    src="{{ asset('template_fe/assets/img/portfolio/3.jpg') }}" alt="..." />
                                 <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
                                     adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt
                                     repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae,
@@ -160,7 +161,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="close-modal" data-bs-dismiss="modal"><img
-                        src="{{ asset('company_profile/assets/img/close-icon.svg') }}" alt="Close modal" /></div>
+                        src="{{ asset('template_fe/assets/img/close-icon.svg') }}" alt="Close modal" /></div>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
@@ -169,10 +170,8 @@
                                 <h2 class="text-uppercase">Project Name</h2>
                                 <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
                                 <img class="img-fluid portfolio-image"
-                                    src="{{ asset('company_profile/assets/img/portfolio/4.jpg') }}"
-                                    data-bs-toggle="modal"
-                                    data-img="{{ asset('company_profile/assets/img/portfolio/4.jpg') }}"
-                                    alt="Gambar">
+                                    src="{{ asset('template_fe/assets/img/portfolio/4.jpg') }}" data-bs-toggle="modal"
+                                    data-img="{{ asset('template_fe/assets/img/portfolio/4.jpg') }}" alt="Gambar">
                                 <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
                                     adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt
                                     repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae,
@@ -204,7 +203,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="close-modal" data-bs-dismiss="modal"><img
-                        src="{{ asset('company_profile/assets/img/close-icon.svg') }}" alt="Close modal" /></div>
+                        src="{{ asset('template_fe/assets/img/close-icon.svg') }}" alt="Close modal" /></div>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
@@ -213,7 +212,7 @@
                                 <h2 class="text-uppercase">Project Name</h2>
                                 <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
                                 <img class="img-fluid d-block mx-auto"
-                                    src="{{ asset('company_profile/assets/img/portfolio/5.jpg') }}" alt="..." />
+                                    src="{{ asset('template_fe/assets/img/portfolio/5.jpg') }}" alt="..." />
                                 <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
                                     adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt
                                     repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae,
@@ -245,7 +244,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="close-modal" data-bs-dismiss="modal"><img
-                        src="{{ asset('company_profile/assets/img/close-icon.svg') }}" alt="Close modal" /></div>
+                        src="{{ asset('template_fe/assets/img/close-icon.svg') }}" alt="Close modal" /></div>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
@@ -254,7 +253,7 @@
                                 <h2 class="text-uppercase">Project Name</h2>
                                 <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
                                 <img class="img-fluid d-block mx-auto"
-                                    src="{{ asset('company_profile/assets/img/portfolio/6.jpg') }}" alt="..." />
+                                    src="{{ asset('template_fe/assets/img/portfolio/6.jpg') }}" alt="..." />
                                 <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
                                     adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt
                                     repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae,
@@ -283,6 +282,8 @@
     </div>
     <!-- Bootstrap core JS-->
     @yield('script')
+
+    {{-- strip tampilkan modal detail portofolio --}}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const images = document.querySelectorAll('.portfolio-image');
