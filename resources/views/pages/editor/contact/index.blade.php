@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-    Contact
+   Admin Contact
 @endsection
 
 @section('content')

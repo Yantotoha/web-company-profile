@@ -36,6 +36,38 @@
             <span>Master Head</span>
         </a>
     </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider" />
+    <li class="nav-item {{ Request::is('admin/category*') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.category') }}">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Category</span>
+        </a>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider" />
+    <li class="nav-item {{ Request::is('admin/service*') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.service') }}">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Services</span>
+        </a>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider" />
+    <li class="nav-item {{ Request::is('admin/portfolio*') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.portfolio') }}">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Portfolio</span>
+        </a>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider" />
+    <li class="nav-item {{ Request::is('admin/about*') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.about') }}">
+            <i class="fas fa-fw fa-users"></i>
+            <span>About</span>
+        </a>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider" />
