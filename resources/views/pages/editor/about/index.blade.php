@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-  Admin About
+    Admin About
 @endsection
 
 @section('content')
@@ -30,9 +30,10 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="Tser" width="100%" cellspacing="0">
+                    <table class="table table-bordered" id="Tabout" width="100%" cellspacing="0">
                         <thead>
                             <tr>
+                                <th>Year</th>
                                 <th>Title</th>
                                 <th>Description</th>
                                 <th>Image</th>
@@ -51,7 +52,7 @@
             <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Add new MasterHead</h5>
+                        <h5 class="modal-title">Add new About</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -60,14 +61,20 @@
                         <div class="form-grop row">
                             <div class="col-sm-6">
                                 <div class="form-group">
+                                    <label for="">Year</label>
+                                    <input type="text" id="year" name="year" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
                                     <label for="">Title</label>
                                     <input type="text" id="title" name="title" class="form-control">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="">Subtitle</label>
-                                    <input type="text" id="subtitle" name="subtitle" class="form-control">
+                                    <label for="">Description</label>
+                                    <input type="text" id="description" name="description" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -93,13 +100,20 @@
             <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Update MasterHead</h5>
+                        <h5 class="modal-title">Update About</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <div class="form-grop row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Year</label>
+                                    <input type="hidden" id="id_update" name="id" class="form-control">
+                                    <input type="text" id="year_update" name="year" class="form-control">
+                                </div>
+                            </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="">Title</label>
@@ -109,8 +123,9 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="">Subtitle</label>
-                                    <input type="text" id="subtitle_update" name="subtitle" class="form-control">
+                                    <label for="">Description</label>
+                                    <input type="text" id="description_update" name="description"
+                                        class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -156,39 +171,37 @@
             }
         }
 
-
-
-
-
-
         $('document').ready(function(e) {
-            var Tser = $('#Tser').DataTable({
-                "responsive": true,
-                'searching': false,
-                "processing": true,
-                "serverSide": true,
-                "pagingType": "full_numbers",
-                "paging": true,
-                "ajax": {
-                    "url": "{{ route('admin.master-head.data') }}",
-                    "data": function(parm) {
-                        parm.search = function() {
-                            return $('#cari').val()
-                        }
-                    },
-
+            var Tabout = $('#Tabout').DataTable({
+                responsive: true,
+                searching: false,
+                processing: true,
+                serverSide: true,
+                pagingType: "full_numbers",
+                paging: true,
+                ajax: {
+                    url: "{{ route('admin.about.data') }}",
+                    data: function(parm) {
+                        parm.search = {
+                            value: $('#cari').val()
+                        }; // Fix di sini
+                    }
                 },
-                "columns": [{
-                        "data": "title",
-                        "orderable": false
+                columns: [{
+                        data: "year",
+                        orderable: false
                     },
                     {
-                        "data": "subtitle",
-                        "orderable": false
+                        data: "title",
+                        orderable: false
                     },
                     {
-                        "data": "image",
-                        "orderable": false,
+                        data: "description",
+                        orderable: false
+                    },
+                    {
+                        data: "image",
+                        orderable: false,
                         render: function(data, type, row) {
                             let img_path = row.image;
                             let img_view = '<img src="{{ asset('storage') }}/' + img_path +
@@ -197,30 +210,27 @@
                         }
                     },
                     {
-                        "data": "id",
-                        "orderable": false,
+                        data: "id",
+                        orderable: false,
                         render: function(data, type, row) {
-                            var idData = row.id;
                             let isVerified = row.verified;
-                            let btn =
-                                '<div class="btn-group" role="group" aria-label="Basic example">';
+                            let btn = '<div class="btn-group" role="group">';
                             if (isVerified == 0) {
                                 btn +=
-                                    '<button type="button" class="btn btn-success btnVerified">Verified</button>';
+                                    '<button class="btn btn-success btnVerified">Verified</button>';
                             }
-                            btn +=
-                                '<button type="button" class="btn btn-warning btnUpdate">Update</button>';
-                            btn +=
-                                '<button type="button" class="btn btn-danger btnDelete">Delete</button>';
+                            btn += '<button class="btn btn-warning btnUpdate">Update</button>';
+                            btn += '<button class="btn btn-danger btnDelete">Delete</button>';
                             btn += '</div>';
                             return btn;
                         }
-                    },
+                    }
                 ]
             });
 
+
             function redraw() {
-                Tser.draw();
+                Tabout.draw();
             }
 
             // function tombol add new
@@ -232,7 +242,7 @@
             $("#proses_add").click(function() {
                 var postData = new FormData($("#addForm")[0]);
                 $.ajax({
-                    url: "{{ URL::route('admin.master-head.store') }}",
+                    url: "{{ URL::route('admin.about.store') }}",
                     data: postData,
                     type: "POST",
                     dataType: "JSON",
@@ -263,15 +273,15 @@
             // proses cari data
             $("#btn-cari").click(function() {
                 let search = $("#cari").val();
-                Tser.draw();
+                Tabout.draw();
             });
 
             // tombol update data
-            $("#Tser tbody").on('click', '.btnUpdate', function() {
-                let data = Tser.row($(this).parents('tr')).data();
+            $("#Tabout tbody").on('click', '.btnUpdate', function() {
+                let data = Tabout.row($(this).parents('tr')).data();
                 let idData = data.id;
                 $.ajax({
-                    url: "{{ URL::route('admin.master-head.detail') }}",
+                    url: "{{ URL::route('admin.about.detail') }}",
                     type: "GET",
                     data: {
                         "_token": "{{ csrf_token() }}",
@@ -285,16 +295,18 @@
                     success: function(data) {
                         if (data.success == 1) {
                             let id = data.data.id;
+                            let year = data.data.year;
                             let title = data.data.title;
-                            let subtitle = data.data.subtitle;
+                            let description = data.data.description;
                             let image = data.data.image;
                             $("#updateForm #imagev_update").empty().append(
                                 '<img id="img" class="img-fluid" src="#">');
                             $('#img').attr('src', "{{ asset('storage') }}/" + image).height(
                                 200);
                             $("#id_update").val(id);
+                            $("#year_update").val(year);
                             $("#title_update").val(title);
-                            $("#subtitle_update").val(subtitle);
+                            $("#description_update").val(description);
                             $('#file_update').val(null);
 
                         } else {
@@ -312,7 +324,7 @@
             $("#proses_update").click(function() {
                 var postData = new FormData($("#updateForm")[0]);
                 $.ajax({
-                    url: "{{ URL::route('admin.master-head.update') }}",
+                    url: "{{ URL::route('admin.about.update') }}",
                     data: postData,
                     type: "POST",
                     dataType: "JSON",
@@ -337,8 +349,8 @@
                 });
             });
 
-            $("#Tser tbody").on('click', '.btnDelete', function() {
-                let data = Tser.row($(this).parents('tr')).data();
+            $("#Tabout tbody").on('click', '.btnDelete', function() {
+                let data = Tabout.row($(this).parents('tr')).data();
                 let idData = data.id;
                 Swal.fire({
                     title: "Are you sure?",
@@ -351,7 +363,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: "{{ URL::route('admin.master-head.delete') }}",
+                            url: "{{ URL::route('admin.about.delete') }}",
                             type: "DELETE",
                             data: {
                                 "_token": "{{ csrf_token() }}",

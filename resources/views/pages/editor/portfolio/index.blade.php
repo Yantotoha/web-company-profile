@@ -35,8 +35,8 @@
                             <tr>
                                 <th>Title</th>
                                 <th>Slug</th>
-                                <th>Description</th>
                                 <th>client</th>
+                                <th>Description</th>
                                 <th>Category</th>
                                 <th>Image</th>
                                 <th>Action</th>
@@ -79,12 +79,18 @@
                                     <input type="text" id="des" name="des" class="form-control">
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm 6">
                                 <div class="form-group">
-                                    <label for="">Category</label>
-                                    <input type="text" id="category" name="category" class="form-control">
+                                    <label for="">category</label>
+                                    <select name="category_id" class="form-control">
+                                        <option value="">-- Pilih Kategori --</option>
+                                        @foreach ($categories as $cat)
+                                            <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
+
                         </div>
                         <div class="form-group">
                             <label for="">Image</label>
@@ -122,7 +128,7 @@
                                     <input type="text" id="title_update" name="title" class="form-control">
                                 </div>
                             </div>
-                           
+
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="">Client</label>
@@ -137,8 +143,13 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="">Category</label>
-                                    <input type="text" id="category_update" name="category" class="form-control">
+                                    <label for="category_id">Category</label>
+                                    <select id="category_id" name="category_id" class="form-control">
+                                        <option value="">-- Pilih Kategori --</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -223,7 +234,7 @@
                         "orderable": false
                     },
                     {
-                        "data": "category",
+                        "data": "category_name",
                         "orderable": false
                     },
                     {
@@ -299,6 +310,8 @@
                     },
                 });
             });
+
+
 
             // proses cari data
             $("#btn-cari").click(function() {

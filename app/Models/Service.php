@@ -12,5 +12,5 @@ class Service extends Model
      use HasFactory,SoftDeletes;
     protected $table = "service";
     protected $guarded = ['id'];
-    protected $fillable = ['title','slug', 'des', 'image', 'created_by'];
+    protected $fillable = ['title','slug', 'description', 'image', 'created_by'];
 }

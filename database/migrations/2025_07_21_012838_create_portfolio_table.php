@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('slug');
             $table->string('des');
             $table->string('client');
-            $table->string('category');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->text('image');
             $table->integer('created_by')->default(0);
             $table->integer('updated_by')->default(0);

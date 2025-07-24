@@ -19,42 +19,61 @@ class PortfolioController extends Controller
 {
     public function index()
     {
-        return view('pages.editor.portfolio.index');
+         $categories = Category::all(); // atau pakai select(['id', 'name']) kalau ingin lebih ringan
+    return view('pages.editor.portfolio.index', compact('categories'));
+       
     }
 
     public function getData(Request $request): JsonResponse
-    {
-        $rescode = 200;
-        $cari = $request->input('search', '');
-        $start = $request->input('start', 0);
-        $limit = $request->input('limit', 10);
-        try {
-            $query = Portfolio::where('title', 'LIKE', '%'.$cari.'%');
-            $portfolio = $query->offset($start)
-                ->limit($limit)
-                ->get();
-            $portfolio_total = $query->count();
-            $data['draw'] = intval($request->input('draw'));
-            $data['recordsTotal'] = $portfolio_total;
-            $data['recordsFiltered'] = $portfolio_total;
-            $data['data'] = $portfolio;
-        } catch (QueryException $e) {
-            $data['error'] = 'Ops terjadi kesalahan saat mengambil data ';
-            Log::error('QueryException: '.$e);
-            //throw $th;
-        } catch (Exception $e) {
-            $data['error'] = 'Ops terjadi kesalahan pada server';
-            Log::error('Exception: '.$e);
-        }
+{
+    $rescode = 200;
+    $cari = $request->input('search', '');
+    $start = $request->input('start', 0);
+    $limit = $request->input('limit', 10);
 
-        return response()->json($data, $rescode);
+    try {
+        $query = Portfolio::with('category')
+            ->where('title', 'LIKE', '%' . $cari . '%');
+
+        $portfolio_total = $query->count();
+
+        $portfolio = $query->offset($start)
+            ->limit($limit)
+            ->get()
+            ->map(function ($item) {
+                return [
+                    'id' => $item->id,
+                    'title' => $item->title,
+                    'slug' => $item->slug,
+                    'client' => $item->client,
+                    'image' => $item->image,
+                    'category_name' => $item->category ? $item->category->name : '-',
+                    'des' => $item->des,
+                    'verified' => $item->verified,
+                ];
+            });
+
+        $data['draw'] = intval($request->input('draw'));
+        $data['recordsTotal'] = $portfolio_total;
+        $data['recordsFiltered'] = $portfolio_total;
+        $data['data'] = $portfolio;
+
+    } catch (QueryException $e) {
+        $data['error'] = 'Ops terjadi kesalahan saat mengambil data ';
+        Log::error('QueryException: ' . $e);
+    } catch (Exception $e) {
+        $data['error'] = 'Ops terjadi kesalahan pada server';
+        Log::error('Exception: ' . $e);
     }
+
+    return response()->json($data, $rescode);
+}
+
 
    public function storeData(Request $request): JsonResponse
 {
     date_default_timezone_set('Asia/Jakarta');
     $rescode = 200;
-    $categories = Category::select('id','name')->orderBy('name')->get();
     $user = Auth::id();
 
     try {
@@ -62,7 +81,7 @@ class PortfolioController extends Controller
             'title'    => 'required|string|max:255|unique:portfolio,title',
             'client'   => 'required|string|max:255',
             'des'      => 'required|string|max:255',
-            'category' => 'required|string|max:255',
+            'category_id' => 'required|exists:categories,id',
             'file'     => 'required|image|mimes:jpeg,png,jpg|max:2048',
             // 'slug' => 'required|string|max:255', ❌ tidak perlu divalidasi dari input
         ];
@@ -98,7 +117,7 @@ class PortfolioController extends Controller
             // Tambahkan data tambahan
             $validData['image'] = $path;
             $validData['created_by'] = $user;
-            $validData['category'] = $categories;
+           $validData['category_id'] = $request->input('category_id');
 
             // Simpan ke database
             Portfolio::create($validData);
@@ -155,7 +174,7 @@ class PortfolioController extends Controller
                 'title' => 'required|string|max:255',
                 'client' => 'required|string|max:255',
                 'des' => 'required|string|max:255',
-                'category' => 'required|string|max:255',
+                'category_id' => 'required|string|max:255',
                 'file' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             ];
             $massages = [
@@ -173,6 +192,10 @@ class PortfolioController extends Controller
                 $res = ['success' => 0, 'messages' => implode(',', $v_error)];
             } else {
                 $validData = $validator->validate();
+
+                // Buat slug dari title
+            $validData['slug'] = Str::slug($validData['title']);
+            
                 $portfolio = Portfolio::find($id);
                 if ($portfolio) {
                     if($validData['file'] !=null){

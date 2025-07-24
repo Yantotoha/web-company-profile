@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('about', function (Blueprint $table) {
             $table->id();
+            $table->string('year');
+            $table->string('title');
+            $table->string('description');
+            $table->text('image');
+            $table->integer('created_by')->default(0);
+            $table->integer('updated_by')->default(0);
+            $table->integer('deleted_by')->default(0);
             $table->timestamps();
         });
     }

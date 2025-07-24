@@ -16,6 +16,7 @@ use App\Http\Controllers\admin\MasterHeadController;
 Route::controller(PublicController::class)->group(function(){
    Route::get('/','index')->name('public');
    Route::get('data','getData')->name('public.data');
+   Route::get('detail','detail')->name('detail');
 });
 
 Route::controller(AuthController::class)->middleware('guest')->group(function(){

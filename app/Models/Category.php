@@ -13,4 +13,9 @@ class Category extends Model
     protected $table = "categories";
     protected $guarded = ['id'];
     protected $fillable = ['name', 'image'];
+
+    public function portfolios()
+        {
+            return $this->hasMany(Portfolio::class, 'category_id');
+        }
 }
