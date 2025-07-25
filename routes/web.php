@@ -17,6 +17,7 @@ Route::controller(PublicController::class)->group(function(){
    Route::get('/','index')->name('public');
    Route::get('data','getData')->name('public.data');
    Route::get('detail','detail')->name('detail');
+   Route::post('send/contact','storeMessageContact')->name('send.contact');
 });
 
 Route::controller(AuthController::class)->middleware('guest')->group(function(){
@@ -30,6 +31,8 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     });
     Route::controller(HomeController::class)->group(function(){
         Route::get('/','index')->name('admin.index');
+        Route::get('notif','notification')->name('admin.notif');
+        Route::get('message/{id}', 'show')->name('editor.contact.show');
     });
     Route::controller (UserController::class)->group (function(){
         Route::get('/users', 'index')->name('admin.users');
@@ -87,5 +90,6 @@ Route::prefix('admin')->middleware('auth')->group(function(){
         Route::get('/contact', 'index')->name('admin.contact');
         Route::get('/contact/data', 'getData')->name('admin.contact.data');
         Route::delete('/contact/delete', 'deleteData')->name('admin.contact.delete');
+        
     });
 });

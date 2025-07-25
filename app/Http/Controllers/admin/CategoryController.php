@@ -96,6 +96,21 @@ class CategoryController extends Controller
         return response()->json($res, $rescode);
     }
 
+    public function detail(Request $request): JsonResponse
+    {
+        $rescode = 200;
+        $id = $request->input('id', 0);
+        $data = Category::find($id);
+        $res = [];
+        if ($data) {
+            $res = ['success' => 1, 'data' => $data];
+        } else {
+            $res = ['success' => 0, 'messages' => 'Data tidak ditemukan'];
+        }
+
+        return response()->json($res, $rescode);
+    }
+
 
     public function updateData(Request $request): JsonResponse
     {
@@ -108,7 +123,7 @@ class CategoryController extends Controller
                 $request->merge(['file' => null]);
             }
             $rules = [
-                'title' => 'required|string|max:255',
+                'name' => 'required|string|max:255',
                 'file' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             ];
             $massages = [

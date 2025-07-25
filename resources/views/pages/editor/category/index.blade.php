@@ -270,7 +270,7 @@
                             $('#img').attr('src', "{{ asset('storage') }}/" + image).height(
                                 200);
                             $("#id_update").val(id);
-                            $("#name_update").val(title);
+                            $("#name_update").val(name);
                             $('#file_update').val(null);
 
                         } else {

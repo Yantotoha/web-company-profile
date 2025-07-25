@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone');
             $table->text('message');
+            $table->integer('is_read')->default(0)->comment('0=belum,1=sudah');
             $table->timestamps();
             $table->softDeletes();
             $table->integer('deleted_by')->default(0);

@@ -110,6 +110,7 @@ class MasterHeadController extends Controller
 
         return response()->json($res, $rescode);
     }
+    
     public function updateData(Request $request): JsonResponse
     {
         date_default_timezone_set('Asia/Jakarta');

@@ -145,13 +145,11 @@
                              <!-- Name input-->
                              <input class="form-control" id="name" name="name" type="text"
                                  placeholder="Your Name *" required />
-
                          </div>
                          <div class="form-group">
                              <!-- Email address input-->
                              <input class="form-control" id="email" name="email" type="email"
                                  placeholder="Your Email *" required />
-
                          </div>
                          <div class="form-group mb-md-0">
                              <!-- Phone number input-->
@@ -231,7 +229,9 @@
      </div>
  @endsection
  @section('script')
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
      <script src="{{ asset('template_admin/vendor/jquery/jquery.min.js') }}"></script>
+     <script src="{{ asset('template_admin/js/demo/datatables-demo.js') }}"></script>
      <script>
          $('document').ready(function(e) {
              $.ajax({
@@ -372,7 +372,7 @@
                              $('#portfolio_category').empty().text(categoryName);
                              $('#portfolioModal').modal('show');
                          } else {
-                             alert(data.message);
+                             toastr_error(data.message);
                          }
                      },
                      complete: function(response) {
@@ -380,9 +380,71 @@
                      }
                  })
              });
+
+             // button send message contact
              $("#submitButton").on('click', function() {
-                 alert('p')
+                 let postData = new FormData($("#contactForm")[0]);
+                 $.ajax({
+                     url: "{{ route('send.contact') }}",
+                     data: postData,
+                     type: "POST",
+                     cache: false,
+                     contentType: false,
+                     processData: false,
+                     beforeSend: function() {
+                         $('.loader-overlay').css('display', 'flex');
+                     },
+                     success: function(data) {
+                         if (data.success == 1) {
+                             $("#contactForm")[0].reset();
+                             toastr_success(data.messages)
+                         } else {
+                             toastr_error(data.messages)
+                         }
+                     },
+                     complete: function(response) {
+                         $('.loader-overlay').css('display', 'none');
+                     },
+
+                 });
              });
+
+             //  toaster
+             function toastr_success(msg) {
+                 const Toast = Swal.mixin({
+                     toast: true,
+                     position: "top-end",
+                     showConfirmButton: false,
+                     timer: 3000,
+                     timerProgressBar: true,
+                     didOpen: (toast) => {
+                         toast.onmouseenter = Swal.stopTimer;
+                         toast.onmouseleave = Swal.resumeTimer;
+                     }
+                 });
+                 Toast.fire({
+                     icon: "success",
+                     title: msg
+                 });
+             }
+
+             function toastr_error(msg) {
+                 const Toast = Swal.mixin({
+                     toast: true,
+                     position: "top-end",
+                     showConfirmButton: false,
+                     timer: 3000,
+                     timerProgressBar: true,
+                     didOpen: (toast) => {
+                         toast.onmouseenter = Swal.stopTimer;
+                         toast.onmouseleave = Swal.resumeTimer;
+                     }
+                 });
+                 Toast.fire({
+                     icon: "error",
+                     title: msg
+                 });
+             }
          });
      </script>
  @endsection

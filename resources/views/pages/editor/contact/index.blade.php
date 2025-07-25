@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-   Admin Contact
+    Admin Contact
 @endsection
 
 @section('content')
@@ -94,6 +94,8 @@
                             }
                             btn +=
                                 '<button type="button" class="btn btn-danger btnDelete">Delete</button>';
+                            btn +=
+                                `<button type="button" class="btn btn-success show" data-id="${idData}">Detail</button>`;
                             btn += '</div>';
                             return btn;
                         }
@@ -149,6 +151,12 @@
                         });
                     }
                 });
+            });
+
+
+            $('#Tcontact tbody').on('click', '.show', function() {
+                let idData = $(this).data('id'); // Ambil ID dari tombol
+                window.location.href = `/admin/message/${idData}`; // Redirect ke halaman detail
             });
 
             function toastr_success(msg) {

@@ -12,5 +12,12 @@ class Contact extends Model
 
     protected $table = "contact";
     protected $guarded = ['id'];
+
+    // hash atau encripted isi data base
+    protected $casts = [
+        'name' => 'encrypted',
+        'email' => 'encrypted',
+        'phone' => 'encrypted',
+    ];
     
 }

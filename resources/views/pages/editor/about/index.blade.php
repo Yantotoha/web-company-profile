@@ -117,7 +117,6 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="">Title</label>
-                                    <input type="hidden" id="id_update" name="id" class="form-control">
                                     <input type="text" id="title_update" name="title" class="form-control">
                                 </div>
                             </div>

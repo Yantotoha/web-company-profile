@@ -45,6 +45,18 @@ class ContacController extends Controller
         return response()->json($data, $rescode);
     }
 
+     public function show($id)
+    {
+        $message = Contact::findOrFail($id);
+
+        if ($message->is_read == 0) {
+            $message->is_read = 1;
+            $message->save();
+        }
+
+        return view('pages.editor.contact.show', compact('message'));
+    }
+
     public function deleteData(Request $request): JsonResponse
     {
         date_default_timezone_set('Asia/Jakarta');

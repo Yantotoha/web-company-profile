@@ -86,6 +86,48 @@
     </div>
 
     @include('includes.admin.script')
+    <script>
+        $(document).ready(function() {
+            function notification() {
+                $.ajax({
+                    url: "{{ route('admin.notif') }}",
+                    type: "GET",
+                    dataType: "json",
+                    success: function(res) {
+                        let totalNotif = res.total;
+                        $("#notif").text(totalNotif);
+
+                        $('#notif-list').empty();
+
+                        if (res.total > 0) {
+                            res.contact.forEach(function(item) {
+                                $('#notif-list').append(`
+                    <a class="dropdown-item d-flex align-items-center" href="/admin/message/${item.id}">
+                        <div class="dropdown-list-image mr-3">
+                            <img class="rounded-circle" src="{{ asset('template_admin/img/undraw_profile_1.svg') }}" alt="..." />
+                            <div class="status-indicator bg-success"></div>
+                        </div>
+                        <div class="font-weight-bold">
+                            <div class="text-truncate">
+                                ${item.message.substring(0, 50)}...
+                            </div>
+                            <div class="small text-gray-500">${item.name} · ${new Date(item.created_at).toLocaleString()}</div>
+                        </div>
+                    </a>
+            `);
+                            });
+                        } else {
+                            $('#notif-list').append(
+                                `<a class="dropdown-item text-center">No new notifications</a>`);
+                        }
+                    }
+
+                });
+            };
+            notification();
+            setInterval(notification, 10000)
+        });
+    </script>
     @yield('script')
 </body>
 
